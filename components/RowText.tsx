@@ -1,5 +1,5 @@
 import React from 'react'
-import { View, Text, StyleSheet } from 'react-native'
+import { View, Text } from 'react-native'
 
 // TODO: Specify types for each style component
 interface Props {
@@ -25,7 +25,5 @@ const Rowtext = (props: Props) => {
     </View>
   )
 }
-
-const styles = StyleSheet.create({})
 
 export default Rowtext

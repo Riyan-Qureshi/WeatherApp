@@ -11,24 +11,42 @@ export default function TabLayout() {
   return (
     <Tabs
       screenOptions={{
-        tabBarActiveTintColor: Colors[colorScheme ?? 'light'].tint,
+        tabBarActiveTintColor: Colors[colorScheme ?? 'dark'].tint,
         headerShown: false,
       }}>
       <Tabs.Screen
         name="index"
         options={{
-          title: 'Home',
+          title: 'Current',
           tabBarIcon: ({ color, focused }) => (
-            <TabBarIcon name={focused ? 'home' : 'home-outline'} color={color} />
+            <TabBarIcon name={focused ? 'cloud' : 'cloud-outline'} color={color} />
           ),
         }}
       />
-      <Tabs.Screen
+      {/* <Tabs.Screen
         name="explore"
         options={{
           title: 'Explore',
           tabBarIcon: ({ color, focused }) => (
             <TabBarIcon name={focused ? 'code-slash' : 'code-slash-outline'} color={color} />
+          ),
+        }}
+      /> */}
+      <Tabs.Screen
+        name="City"
+        options={{
+          title: 'City',
+          tabBarIcon: ({ color, focused }) => (
+            <TabBarIcon name={focused ? 'business' : 'business-outline'} color={'orange'} />
+          ),
+        }}
+      />
+      <Tabs.Screen
+        name="UpcomingWeather"
+        options={{
+          title: 'Upcoming',
+          tabBarIcon: ({ color, focused }) => (
+            <TabBarIcon name={focused ? 'time' : 'time-outline'} color={'orange'} />
           ),
         }}
       />

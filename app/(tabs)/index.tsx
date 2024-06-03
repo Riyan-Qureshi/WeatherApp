@@ -1,8 +1,8 @@
 import { View, StyleSheet } from 'react-native'
 import React from 'react'
 import CurrentWeather from '../screens/CurrentWeather'
-import UpcomingWeather from '../screens/UpcomingWeather'
-import City from '../screens/City'
+import UpcomingWeather from './UpcomingWeather'
+import City from './City'
 
 const HomeScreen = () => {
   return (

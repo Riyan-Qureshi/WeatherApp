@@ -11,7 +11,7 @@ export default function TabLayout() {
   return (
     <Tabs
       screenOptions={{
-        tabBarActiveTintColor: Colors[colorScheme ?? 'dark'].tint,
+        tabBarActiveTintColor: Colors[colorScheme ?? 'light'].tint,
         headerShown: false,
       }}>
       <Tabs.Screen
@@ -19,9 +19,10 @@ export default function TabLayout() {
         options={{
           title: 'Current',
           tabBarIcon: ({ color, focused }) => (
-            <TabBarIcon name={focused ? 'cloud' : 'cloud-outline'} color={color} />
+            <TabBarIcon name={focused ? 'cloud' : 'cloud-outline'} color={'orange'} />
           ),
         }}
+        
       />
       {/* <Tabs.Screen
         name="explore"

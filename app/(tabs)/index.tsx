@@ -7,9 +7,7 @@ import { WeatherData } from '../types';
 
 const HomeScreen = () => {
   const {weather, errorMsg, loading} = useGetWeather();
-
-  if (weather) {
-    console.log(weather[0])
+  if (weather && !loading) {
     return (
       <View style={styles.container}>
         {<CurrentWeather {...weather[0]}/>}
@@ -17,11 +15,9 @@ const HomeScreen = () => {
     )
   }
 
-  // console.log(weather.list[0]);
   return (
     <View style={styles.loading}>
         <ActivityIndicator size={'large'} color={'blue'}/>
-        {/* <CurrentWeather weatherData={weather.list[0]}/> */}
     </View>
   )
 }

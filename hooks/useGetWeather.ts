@@ -8,9 +8,10 @@ const parseData = (data: any): Array<WeatherData> => {
 
     try {
         return data.list.map((el) => {
-            const {temp, feels_like, temp_min, temp_max} = el.main;
+            const {temp, feels_like, temp_min, temp_max} = el.main
             const {main, description} = el.weather[0]
-            return {temp, feelsLike: feels_like, tempMin: temp_min, tempMax: temp_max, weatherCondition: main, description}
+            const dt_txt = el.dt_txt
+            return {temp, feelsLike: feels_like, tempMin: temp_min, tempMax: temp_max, weatherCondition: main, description, dtText: dt_txt}
         })
     } catch(error) {
         const err = new Error(`Unable to parse WeatherData: ${error}`)

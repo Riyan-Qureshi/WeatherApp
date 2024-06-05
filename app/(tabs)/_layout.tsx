@@ -21,8 +21,7 @@ export default function TabLayout() {
           tabBarIcon: ({ color, focused }) => (
             <TabBarIcon name={focused ? 'cloud' : 'cloud-outline'} color={'orange'} />
           ),
-        }}
-        
+        }} 
       />
       {/* <Tabs.Screen
         name="explore"
@@ -41,6 +40,7 @@ export default function TabLayout() {
             <TabBarIcon name={focused ? 'business' : 'business-outline'} color={'orange'} />
           ),
         }}
+        
       />
       <Tabs.Screen
         name="UpcomingWeather"

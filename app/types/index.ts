@@ -1,4 +1,5 @@
 export interface WeatherData {
+    dtText: string
     weatherCondition: string
     description: string
     temp: number

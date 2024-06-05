@@ -19,7 +19,7 @@ const CurrentWeather = (weatherData: WeatherData) => {
     message
   } = styles
 
-  const { temp, feelsLike, tempMax, tempMin, weatherCondition, description } = weatherData
+  const { temp, feelsLike, tempMax, tempMin, weatherCondition, description, dtText } = weatherData
   const weatherCondKey = weatherCondition as keyof typeof weatherType
 
   return (

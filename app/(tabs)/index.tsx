@@ -1,28 +1,29 @@
-import { View, StyleSheet } from 'react-native';
+import { View, StyleSheet, Text } from 'react-native';
 import React, { useState, useEffect } from 'react';
 import CurrentWeather from '../screens/CurrentWeather';
 import { ActivityIndicator } from 'react-native';
 import { useGetWeather } from '@/hooks/useGetWeather';
+import { WeatherData } from '../types';
 
 const HomeScreen = () => {
-  const [weather, errorMsg, loading] = useGetWeather();
-  console.log(loading, errorMsg, weather)
+  const {weather, errorMsg, loading} = useGetWeather();
 
-  if (weather && weather.list) {
+  if (weather) {
+    console.log(weather[0])
     return (
       <View style={styles.container}>
-        <CurrentWeather />
+        {/* {weather.map((el) => (<Text style={{color: 'red'}}>{`${JSON.stringify(el)}`}</Text>))} */}
+        {<CurrentWeather {...weather[0]}/>}
+        {/* <CurrentWeather weatherData={el}/> */}
       </View>
     )
   }
 
-  // if(weather) {
-  //   console.log(weather);
-  // }
-
+  // console.log(weather.list[0]);
   return (
     <View style={styles.loading}>
         <ActivityIndicator size={'large'} color={'blue'}/>
+        {/* <CurrentWeather weatherData={weather.list[0]}/> */}
     </View>
   )
 }

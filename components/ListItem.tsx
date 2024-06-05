@@ -2,9 +2,6 @@ import React from 'react'
 import {View, Text, StyleSheet} from 'react-native'
 import Feather from '@expo/vector-icons/Feather';
 
-
-// type ItemProps = {dt_text: string, min: number, max: number};
-
 const ListItem = (props: any) => {
     const { dt_text, min, max } = props;
     const { item, temp, date } = styles;

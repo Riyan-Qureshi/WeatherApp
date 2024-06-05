@@ -4,39 +4,45 @@ import React from 'react'
 import Feather from '@expo/vector-icons/Feather'
 import RowText from '@/components/RowText'
 import { weatherType } from '../utilities/weatherType'
+import { WeatherData } from '@/app/types'
 
-const CurrentWeather = () => {
+const CurrentWeather = (weatherData: WeatherData) => {
   const {
     wrapper,
     container,
-    temp,
+    tempStyles,
     feels,
     highLow,
     highLowWrapper,
     bodyWrapper,
-    description,
+    descriptionStyles,
     message
   } = styles
 
+  const { temp, feelsLike, tempMax, tempMin, weatherCondition, description } = weatherData
+  // console.log(weatherCondition)
+  const weatherCondKey = weatherCondition as keyof typeof weatherType;
+  // console.log(weatherType[weatherCondKey].icon)
+
   return (
-    <SafeAreaView style={wrapper}>
+    <SafeAreaView style={[wrapper, {backgroundColor: weatherType[weatherCondKey].backgroundColor}]}>
       <View style={container}>
-        <Feather name="sun" size={100} color="black" />
-        <Text style={temp}>6</Text>
-        <Text style={feels}>Feels like 5</Text>
+        <Feather name={weatherType[weatherCondKey].icon} size={100} color="black" />
+        <Text style={tempStyles}>{temp}</Text>
+        <Text style={feels}>{`Feels like ${feelsLike}`}</Text>
         <RowText
-          messageOne="High: 8"
-          messageTwo="Low: 6"
+          messageOne={`High: ${tempMax}`}
+          messageTwo={`Low: ${tempMin}`}
           containerStyles={highLowWrapper}
           messageOneStyles={highLow}
           messageTwoStyles={highLow}
         />
       </View>
       <RowText
-        messageOne="It's sunny"
-        messageTwo={weatherType['Thunderstorm'].message}
+        messageOne={description}
+        messageTwo={weatherType[weatherCondKey].message}
         containerStyles={bodyWrapper}
-        messageOneStyles={description}
+        messageOneStyles={descriptionStyles}
         messageTwoStyles={message}
       />
     </SafeAreaView>
@@ -53,7 +59,7 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'center'
   },
-  temp: {
+  tempStyles: {
     color: 'black',
     fontSize: 48
   },
@@ -74,7 +80,7 @@ const styles = StyleSheet.create({
     paddingLeft: 25,
     marginBottom: 40
   },
-  description: {
+  descriptionStyles: {
     fontSize: 48
   },
   message: {
@@ -82,4 +88,4 @@ const styles = StyleSheet.create({
   }
 })
 
-export default CurrentWeather
+export default CurrentWeather;

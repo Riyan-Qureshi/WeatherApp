@@ -33,8 +33,6 @@ export const useGetWeather = () => {
             )
             const data = await res.json();
             const parsedData = parseData(data)
-            // console.log("MY DATAAAA", JSON.stringify(data.list[0].weather[0], undefined, 4))
-            // console.log(parsedData)
             setWeather(parsedData);
         } catch (errorMsg) {
             setErrorMsg('Could not fetch weather');

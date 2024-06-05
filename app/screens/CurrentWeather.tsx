@@ -20,9 +20,7 @@ const CurrentWeather = (weatherData: WeatherData) => {
   } = styles
 
   const { temp, feelsLike, tempMax, tempMin, weatherCondition, description } = weatherData
-  // console.log(weatherCondition)
-  const weatherCondKey = weatherCondition as keyof typeof weatherType;
-  // console.log(weatherType[weatherCondKey].icon)
+  const weatherCondKey = weatherCondition as keyof typeof weatherType
 
   return (
     <SafeAreaView style={[wrapper, {backgroundColor: weatherType[weatherCondKey].backgroundColor}]}>

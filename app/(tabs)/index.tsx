@@ -12,9 +12,7 @@ const HomeScreen = () => {
     console.log(weather[0])
     return (
       <View style={styles.container}>
-        {/* {weather.map((el) => (<Text style={{color: 'red'}}>{`${JSON.stringify(el)}`}</Text>))} */}
         {<CurrentWeather {...weather[0]}/>}
-        {/* <CurrentWeather weatherData={el}/> */}
       </View>
     )
   }

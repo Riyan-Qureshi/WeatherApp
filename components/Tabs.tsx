@@ -8,7 +8,7 @@ import { TabBarIcon } from '@/components/navigation/TabBarIcon';
 
 const Tab = createBottomTabNavigator()
 
-const Tabs = (weatherData: WeatherData[]) => {
+const Tabs = ({weatherData}: {weatherData: WeatherData[]}) => {
     return(
     <Tab.Navigator
         screenOptions={{
@@ -21,7 +21,7 @@ const Tabs = (weatherData: WeatherData[]) => {
               <TabBarIcon name={focused ? 'cloud' : 'cloud-outline'} color={'orange'} />
             ),
           }}>
-            { () => <CurrentWeather {...weatherData[0]}/>}
+            { () => <CurrentWeather weatherData={weatherData[0]}/>}
           </Tab.Screen>
           
           <Tab.Screen name={'City'} options={{
@@ -29,16 +29,15 @@ const Tabs = (weatherData: WeatherData[]) => {
               <TabBarIcon name={focused ? 'business' : 'business-outline'} color={'orange'} />
             ),
           }}>
-            { () => <City {...weatherData[0]}/>}
+            { () => <City weatherData={weatherData[0]}/>}
           </Tab.Screen>
 
           <Tab.Screen name={'Upcoming'} options={{
             tabBarIcon: ({ focused }) => (
               <TabBarIcon name={focused ? 'time' : 'time-outline'} color={'orange'} />
-            ),
-            headerShown: false
+            )
           }}>
-            { () => <UpcomingWeather {...weatherData}/>}
+            { () => <UpcomingWeather weatherData={weatherData}/>}
           </ Tab.Screen>
         </Tab.Navigator>
     )

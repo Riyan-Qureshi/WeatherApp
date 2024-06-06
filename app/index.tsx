@@ -8,10 +8,11 @@ import Tabs from '@/components/Tabs';
 
 const App = () => {
   const {weather, errorMsg, loading} = useGetWeather();
+  console.log("weather type", weather.length)
   if (weather && !loading) {
     return (
       <NavigationContainer independent={true}>
-        <Tabs {...weather}/>
+        <Tabs weatherData={weather}/>
       </NavigationContainer>
     )
   }
@@ -28,9 +29,6 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     flex: 1
   },
-  container: {
-    flex: 1
-  }
 })
 
 export default App

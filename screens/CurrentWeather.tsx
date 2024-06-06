@@ -6,7 +6,12 @@ import RowText from '@/components/RowText'
 import { weatherType } from '../utilities/weatherType'
 import { WeatherData } from '@/types'
 
-const CurrentWeather = (weatherData: WeatherData) => {
+interface CurrentWeatherProps {
+  weatherData: WeatherData
+}
+
+const CurrentWeather = (props: CurrentWeatherProps) => {
+  const { weatherData } = props
   const {
     wrapper,
     container,

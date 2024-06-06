@@ -1,4 +1,6 @@
 export interface WeatherData {
+    sunset: string
+    sunrise: string
     city: string
     country: string
     population: number

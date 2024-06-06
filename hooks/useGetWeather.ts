@@ -6,13 +6,15 @@ const WEATHER_API_KEY = process.env.EXPO_PUBLIC_VALUEWEATHER_API_KEY
 
 const parseData = (data: any): Array<WeatherData> => {
     try {
-        return (data.list.map((el) => {
+        return (data.list.map((el: any) => {
             const {temp, feels_like, temp_min, temp_max} = el.main
             const {main, description} = el.weather[0]
             const dt_txt = el.dt_txt
             const population = data.city.population
             const country = data.city.country
             const city = data.city.name
+            const sunrise = data.city.sunrise
+            const sunset = data.city.sunset
             return {
                 temp,
                 feelsLike: feels_like, 
@@ -23,7 +25,9 @@ const parseData = (data: any): Array<WeatherData> => {
                 dtText: dt_txt,
                 population,
                 country,
-                city
+                city,
+                sunrise,
+                sunset
             }
         }))
     } catch(error) {

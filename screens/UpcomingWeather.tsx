@@ -6,8 +6,12 @@ import ListItem from '@/components/ListItem';
 import { WeatherData } from '../types';
 import { useGetWeather } from '@/hooks/useGetWeather';
 
-const UpcomingWeather = (weatherData: WeatherData[]) => {
-    const { weather } = useGetWeather();
+interface UpcomingWeatherProps {
+    weatherData: WeatherData[]
+}
+
+const UpcomingWeather = (props: UpcomingWeatherProps) => {
+    const weatherData = props.weatherData
     const renderItem: ListRenderItem<WeatherData> = ({item}) => (
         <ListItem condition={item.weatherCondition} dtText={item.dtText} min={item.tempMin} max={item.tempMax} weatherCondition={item.weatherCondition}/>
     )
@@ -16,7 +20,7 @@ const UpcomingWeather = (weatherData: WeatherData[]) => {
         <SafeAreaView style={container}>
             <ImageBackground source={require('@/assets/images/upcoming-background.jpg')} style={image}>
                 <FlatList 
-                    data={weather} 
+                    data={weatherData} 
                     renderItem={renderItem}
                     keyExtractor={item => item.dtText}
                     // ItemSeparatorComponent={() => <View style={{backgroundColor: 'gray', height: 2}}/>}

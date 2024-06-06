@@ -11,7 +11,12 @@ import IconText from '@/components/IconText'
 // import { useGetWeather } from '@/hooks/useGetWeather'
 import { WeatherData } from '../types'
 
-const City = (weatherData: WeatherData) => {
+interface CityProps {
+  weatherData: WeatherData
+}
+
+const City = (props: CityProps) => {
+  const { weatherData } = props
   const {
     container,
     cityName,

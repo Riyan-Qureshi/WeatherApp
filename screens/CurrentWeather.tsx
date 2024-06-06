@@ -28,9 +28,9 @@ const CurrentWeather = (props: CurrentWeatherProps) => {
   const weatherCondKey = weatherCondition as keyof typeof weatherType
 
   return (
-    <SafeAreaView style={[wrapper, {backgroundColor: weatherType[weatherCondKey].backgroundColor}]}>
+    <SafeAreaView style={[wrapper, {backgroundColor: weatherType[weatherCondKey]?.backgroundColor}]}>
       <View style={container}>
-        <Feather name={weatherType[weatherCondKey].icon} size={100} color="black" />
+        <Feather name={weatherType[weatherCondKey]?.icon} size={100} color="black" />
         <Text style={tempStyles}>{`${Math.round(temp)}° C`}</Text>
         <Text style={feels}>{`Feels like: ${Math.round(feelsLike)}°`}</Text>
         <RowText
@@ -43,7 +43,7 @@ const CurrentWeather = (props: CurrentWeatherProps) => {
       </View>
       <RowText
         messageOne={description}
-        messageTwo={weatherType[weatherCondKey].message}
+        messageTwo={weatherType[weatherCondKey]?.message}
         containerStyles={bodyWrapper}
         messageOneStyles={descriptionStyles}
         messageTwoStyles={message}
@@ -84,10 +84,10 @@ const styles = StyleSheet.create({
     marginBottom: 40
   },
   descriptionStyles: {
-    fontSize: 48
+    fontSize: 42
   },
   message: {
-    fontSize: 30
+    fontSize: 25
   }
 })
 

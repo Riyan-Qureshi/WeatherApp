@@ -31,11 +31,11 @@ const CurrentWeather = (props: CurrentWeatherProps) => {
     <SafeAreaView style={[wrapper, {backgroundColor: weatherType[weatherCondKey].backgroundColor}]}>
       <View style={container}>
         <Feather name={weatherType[weatherCondKey].icon} size={100} color="black" />
-        <Text style={tempStyles}>{temp}</Text>
-        <Text style={feels}>{`Feels like ${feelsLike}`}</Text>
+        <Text style={tempStyles}>{`${Math.round(temp)}° C`}</Text>
+        <Text style={feels}>{`Feels like: ${Math.round(feelsLike)}°`}</Text>
         <RowText
-          messageOne={`High: ${tempMax}`}
-          messageTwo={`Low: ${tempMin}`}
+          messageOne={`High: ${Math.round(tempMax)}° `}
+          messageTwo={`Low: ${Math.round(tempMin)}°`}
           containerStyles={highLowWrapper}
           messageOneStyles={highLow}
           messageTwoStyles={highLow}

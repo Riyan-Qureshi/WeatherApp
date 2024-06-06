@@ -8,8 +8,8 @@ import {
 } from 'react-native'
 import { SafeAreaView } from 'react-native-safe-area-context'
 import IconText from '@/components/IconText'
-// import { useGetWeather } from '@/hooks/useGetWeather'
 import { WeatherData } from '../types'
+import moment from 'moment'
 
 interface CityProps {
   weatherData: WeatherData
@@ -30,23 +30,23 @@ const City = (props: CityProps) => {
     rowLayout
   } = styles
 
-  // const {weather, errorMsg, loading} = useGetWeather();
-  const { country, city, population } = weatherData;
-  console.log(city)
+  const { country, city, population, sunrise, sunset } = weatherData;
 
   return (
     <SafeAreaView style={container}>
       <ImageBackground
         source={require('@/assets/images/city-background.jpg')}
         style={imageLayout}
-      >
-        <Text style={[cityName, cityText]}>{city}</Text>
-        <Text style={[countryName, cityText]}>{country}</Text>
+      > 
+        <View style={{backgroundColor: '#000000d1'}}>
+          <Text style={[cityName, cityText]}>{city}</Text>
+          <Text style={[countryName, cityText]}>{country}</Text>
+        </View>
         <View style={[populationWrapper, rowLayout]}>
           <IconText
             iconName={'user'}
             iconColor={'red'}
-            bodyText={population.toString()}
+            bodyText={`Population: ${population.toString()}`}
             bodyTextStyles={populationText}
           />
         </View>
@@ -54,13 +54,13 @@ const City = (props: CityProps) => {
           <IconText
             iconName={'sunrise'}
             iconColor={'white'}
-            bodyText={'10:46:58 am'}
+            bodyText={moment(sunrise).format('h:mm:ss a')}
             bodyTextStyles={riseSetText}
           />
           <IconText
             iconName={'sunset'}
             iconColor={'white'}
-            bodyText={'17:28:15 pm'}
+            bodyText={moment(sunset).format('h:mm:ss a')}
             bodyTextStyles={riseSetText}
           />
         </View>
@@ -75,7 +75,7 @@ const styles = StyleSheet.create({
     marginTop: StatusBar.currentHeight || 0
   },
   imageLayout: {
-    flex: 1
+    flex: 1,
   },
   cityName: {
     fontSize: 40

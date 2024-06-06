@@ -1,10 +1,8 @@
 import React from 'react'
-import { Text } from 'react-native';
-import { FlatList, StyleSheet, View, StatusBar, ImageBackground, ListRenderItem } from 'react-native'
+import { FlatList, StyleSheet, StatusBar, ImageBackground, ListRenderItem } from 'react-native'
 import { SafeAreaView } from 'react-native-safe-area-context';
 import ListItem from '@/components/ListItem';
 import { WeatherData } from '../types';
-import { useGetWeather } from '@/hooks/useGetWeather';
 
 interface UpcomingWeatherProps {
     weatherData: WeatherData[]
@@ -23,7 +21,6 @@ const UpcomingWeather = (props: UpcomingWeatherProps) => {
                     data={weatherData} 
                     renderItem={renderItem}
                     keyExtractor={item => item.dtText}
-                    // ItemSeparatorComponent={() => <View style={{backgroundColor: 'gray', height: 2}}/>}
                 />
             </ImageBackground>
         </SafeAreaView>

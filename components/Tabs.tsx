@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React from 'react';
 import CurrentWeather from '@/screens/CurrentWeather';
 import { WeatherData } from '@/types';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';

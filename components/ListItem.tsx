@@ -1,7 +1,7 @@
 import React from 'react'
 import {View, Text, StyleSheet} from 'react-native'
 import Feather from '@expo/vector-icons/Feather';
-import { weatherType } from '@/app/utilities/weatherType';
+import { weatherType } from '@/utilities/weatherType';
 import moment from 'moment';
 
 const ListItem = (props: any) => {

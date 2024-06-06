@@ -4,7 +4,7 @@ import React from 'react'
 import Feather from '@expo/vector-icons/Feather'
 import RowText from '@/components/RowText'
 import { weatherType } from '../utilities/weatherType'
-import { WeatherData } from '@/app/types'
+import { WeatherData } from '@/types'
 
 const CurrentWeather = (weatherData: WeatherData) => {
   const {
@@ -19,7 +19,7 @@ const CurrentWeather = (weatherData: WeatherData) => {
     message
   } = styles
 
-  const { temp, feelsLike, tempMax, tempMin, weatherCondition, description, dtText } = weatherData
+  const { temp, feelsLike, tempMax, tempMin, weatherCondition, description, population} = weatherData
   const weatherCondKey = weatherCondition as keyof typeof weatherType
 
   return (

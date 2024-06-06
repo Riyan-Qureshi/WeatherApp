@@ -8,8 +8,10 @@ import {
 } from 'react-native'
 import { SafeAreaView } from 'react-native-safe-area-context'
 import IconText from '@/components/IconText'
+// import { useGetWeather } from '@/hooks/useGetWeather'
+import { WeatherData } from '../types'
 
-const City = () => {
+const City = (weatherData: WeatherData) => {
   const {
     container,
     cityName,
@@ -23,19 +25,23 @@ const City = () => {
     rowLayout
   } = styles
 
+  // const {weather, errorMsg, loading} = useGetWeather();
+  const { country, city, population } = weatherData;
+  console.log(city)
+
   return (
     <SafeAreaView style={container}>
       <ImageBackground
         source={require('@/assets/images/city-background.jpg')}
         style={imageLayout}
       >
-        <Text style={[cityName, cityText]}>Toronto</Text>
-        <Text style={[countryName, cityText]}>Canada</Text>
+        <Text style={[cityName, cityText]}>{city}</Text>
+        <Text style={[countryName, cityText]}>{country}</Text>
         <View style={[populationWrapper, rowLayout]}>
           <IconText
             iconName={'user'}
             iconColor={'red'}
-            bodyText={'8000'}
+            bodyText={population.toString()}
             bodyTextStyles={populationText}
           />
         </View>

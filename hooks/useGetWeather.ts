@@ -1,18 +1,31 @@
 import React, { useState, useEffect } from 'react';
 import * as Location from 'expo-location';
-import { WeatherData } from '@/app/types';
+import { WeatherData } from '@/types';
 
 const WEATHER_API_KEY = process.env.EXPO_PUBLIC_VALUEWEATHER_API_KEY
 
 const parseData = (data: any): Array<WeatherData> => {
-
     try {
-        return data.list.map((el) => {
+        return (data.list.map((el) => {
             const {temp, feels_like, temp_min, temp_max} = el.main
             const {main, description} = el.weather[0]
             const dt_txt = el.dt_txt
-            return {temp, feelsLike: feels_like, tempMin: temp_min, tempMax: temp_max, weatherCondition: main, description, dtText: dt_txt}
-        })
+            const population = data.city.population
+            const country = data.city.country
+            const city = data.city.name
+            return {
+                temp,
+                feelsLike: feels_like, 
+                tempMin: temp_min, 
+                tempMax: temp_max, 
+                weatherCondition: main, 
+                description, 
+                dtText: dt_txt,
+                population,
+                country,
+                city
+            }
+        }))
     } catch(error) {
         const err = new Error(`Unable to parse WeatherData: ${error}`)
         console.log(err)
@@ -35,6 +48,7 @@ export const useGetWeather = () => {
             const data = await res.json();
             const parsedData = parseData(data)
             setWeather(parsedData);
+            // console.log(parsedData)
         } catch (errorMsg) {
             setErrorMsg('Could not fetch weather');
         } finally {

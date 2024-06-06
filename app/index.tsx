@@ -1,17 +1,18 @@
 import { View, StyleSheet, Text } from 'react-native';
 import React, { useState, useEffect } from 'react';
-import CurrentWeather from '../screens/CurrentWeather';
 import { ActivityIndicator } from 'react-native';
 import { useGetWeather } from '@/hooks/useGetWeather';
-import { WeatherData } from '../types';
+import { NavigationContainer } from '@react-navigation/native';
+import Tabs from '@/components/Tabs';
 
-const HomeScreen = () => {
+
+const App = () => {
   const {weather, errorMsg, loading} = useGetWeather();
   if (weather && !loading) {
     return (
-      <View style={styles.container}>
-        {<CurrentWeather {...weather[0]}/>}
-      </View>
+      <NavigationContainer independent={true}>
+        <Tabs {...weather}/>
+      </NavigationContainer>
     )
   }
 
@@ -32,4 +33,4 @@ const styles = StyleSheet.create({
   }
 })
 
-export default HomeScreen
+export default App

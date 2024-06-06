@@ -1,4 +1,7 @@
 export interface WeatherData {
+    city: string
+    country: string
+    population: number
     dtText: string
     weatherCondition: string
     description: string
